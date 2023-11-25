@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     public Rigidbody2D monRigidBody;
     public float speed;
     public Ennemy ennemy;
+    // public Transform limitU;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,10 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
+        
+        // if (transform.position.y > limitU.position.y) {
+        //     Destroy(gameObject);
+        // }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

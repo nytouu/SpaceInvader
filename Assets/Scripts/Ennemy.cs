@@ -38,6 +38,8 @@ public class Ennemy : MonoBehaviour
         if (transform.position.y < limitB.position.y)
         {
             player.updateScore(-1);
+            EnnemyManager manager = GetComponentInParent<EnnemyManager>();
+            manager.RemoveEnnemy(gameObject);
             Destroy(gameObject);
         }
     }
@@ -53,9 +55,12 @@ public class Ennemy : MonoBehaviour
 
     public void takeDamage() {
         currentHp -= 1;
-        if (currentHp < 0) {
+        if (currentHp <= 0) {
             currentHp = 0;
             Instantiate(drop, transform.position, Quaternion.identity);
+            
+            EnnemyManager manager = GetComponentInParent<EnnemyManager>();
+            manager.RemoveEnnemy(gameObject);
             Destroy(gameObject);
         }
     }
